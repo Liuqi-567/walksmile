@@ -1,0 +1,168 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,height=device-height">
+    <meta name="keywords" content="百度网盘搜索引擎|行笑网|百度云搜索|种子搜索|怎么搜索百度网盘|百度网盘搜索技巧|" />
+    <meta name="description" content="国内最优秀的百度云盘资源搜索引擎" />
+    <link href="/static/images/icon.ico" rel="shortcut icon" />
+    <title>行笑网-百度云搜索-网盘搜索-百度网盘搜索引擎</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/js/suggest.js"></script>
+    <style>
+    body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    font: 14px arial;
+    }
+    .suggest_link {
+     background-color: #FFFFFF;
+     padding: 2px 6px 2px 6px;
+     text-align: left;
+     max-width: 600px;
+
+     }
+     .suggest_link_over {
+      background-color: #E8F2FE;
+      padding: 2px 6px 2px 6px;
+      text-align: left;
+      max-width: 600px;
+
+     }
+     #search_suggest {
+      position: absolute;
+      background-color: #FFFFFF;
+      text-align: left;
+      border: 1px solid #000000;
+      max-width: 600px;
+      z-index: 100;
+     }
+    </style>
+    
+    <!--百度验证-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6b99b3a64046d96bdc0ce726e5c08f04";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <!--google analyse-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-102424596-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3036995584076588",
+    enable_page_level_ads: true
+  });
+</script>
+
+<meta name="shenma-site-verification" content="66d088110d4aa514d69fc9457d02bfd2_1526164204"> 
+     <!--鼠标事件-->
+     <script>
+        function switchtpye(x) {
+            x.click();
+        }
+    </script>
+
+    </head>
+
+<body style="background-image:url({{.pic}});overflow-x:hidden;overflow-y:hidden;height:100%;width: 100%">
+    <nav class="navbar ">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse"
+                aria-expanded="false" >
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar" style="background-color:cyan"></span>
+                  <span class="icon-bar" style="background-color:cyan"></span>
+                  <span class="icon-bar" style="background-color:cyan"></span>
+                </button>
+            <a class="navbar-brand"  style="color:white" href="/">行笑网</a>
+        </div>
+        <div class="collapse navbar-collapse" id="collapse">
+            <ul class="nav navbar-nav navbar-right ">
+                   <li> <a style="color:white" href="http://ettren.cn" >优惠券</a></li> 
+                <li> <a  style="color:white"  href="/wallpaper/0">壁纸</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="container body-content" style="height:100%">
+        <h1 class="text-center" style=" color:white; padding-top: 80px"> <div>
+            <a class="header-logo-invertocat" href="https://github.com/hongshengjie/walksmile" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+                <svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+              </a>
+        </div>行笑网<small style="color:white">百度网盘搜索</small></h1>
+    <!-- <h4 class="text-center" style=" color:white;"> Life is just like a box of chocalates.You never know what you're gonna get. </h4> -->
+        <form name="search" class="form-inline " style="width:100%;min-width: 300px" action="/search">
+            <div class="container" style="max-width: 600px;">
+                <div class="row text-center">
+                    <div class="input-group input-group-lg col-xs-12 col-sm-12 col-md-12 ">
+                        <input id="q" type="search" class="form-control" name="q" onkeyup="searchSuggest();" onkeydown="searchSuggest();" maxlength="200"
+                            placeholder="search" autocomplete="off"/>
+                        <span class="input-group-btn" style="width: 63.02px">
+                            <button class="btn btn-info" type="submit">搜索</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="row" style="position: absolute;z-index: 100;width:94%;">
+                    <div id="suggest"></div>
+                </div>
+            </div>
+        </form>
+        <!--生成热词-->
+        <div  class="container text-center" style="max-width: 600px;">
+            <ul id="myTab" class="nav nav-pills ">
+              
+                {{range $index,$wordlist := .hotwords}}
+                <li {{$a :="26" }}{{if eq $a $index }}class="active" {{end}}><a style="color:white" href="#{{$index}}" onmousemove="switchtpye(this)" data-toggle="tab">
+                    {{$a := "26"}}{{if eq $a $index }}电影{{end}}
+                    {{$b := "452"}}{{if eq $b $index }}美剧{{end}}
+                    {{$c := "4"}}{{if eq $c $index }}电视{{end}}
+                    {{$d := "23"}}{{if eq $d $index }}动漫{{end}}
+                    {{$e := "7"}}{{if eq $e $index }}小说{{end}}
+                    {{$e := "453"}}{{if eq $e $index }}韩剧{{end}}
+                    {{$e := "19"}}{{if eq $e $index }}综艺{{end}}
+                </a></li>
+                {{end}}
+                <li><a style="color:white" class="btn  btn-danger" href="http://ettren.cn" >优惠券</a> </li>
+            </ul>
+            <div id="myTabContent" class="tab-content ">
+                {{range $index,$wordlist := .hotwords}}
+                <div class="tab-pane fade {{$a := "26"}}{{if eq $a $index }}in active{{end}}" id="{{$index}}">
+                    <ol>
+                        {{range $index2,$word := $wordlist}}
+                        <li style="float: left;list-style:none; padding:2px"><a class="btn btn-success " style="color:white" href="/search?q={{$word}}">{{$word}}</a></li>
+                        {{end}}
+                    </ol>
+                </div>
+                {{end}}
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <img src="/static/images/gzh.jpg" class="img-thumbnail " style="height:100px;width:100px" />
+                <p>公众号提供搜索</p>
+            </div>
+           
+        </div>
+    </div>
+    
+</body>
+
+</html> 

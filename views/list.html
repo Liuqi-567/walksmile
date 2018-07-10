@@ -1,0 +1,76 @@
+<html>
+{{template "header.html" .}} {{template "navbar.html" .}}
+
+<body>
+
+    <div class="container" style="top: 30px;">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <ul class="nav nav-tabs row ">
+                <li role="presentation" {{$a :=0 }}{{if eq .cat $a}}class="active" {{end}}>
+                    <a href="?q={{.q}}&cat=0">全部</a>
+                </li>
+                <li role="presentation" {{$a :=2 }}{{if eq .cat $a}}class="active" {{end}}>
+                    <a href="?q={{.q}}&cat=2">pdf</a>
+                </li>
+                <li role="presentation" {{$a :=7 }}{{if eq .cat $a}}class="active" {{end}}>
+                    <a href="?q={{.q}}&cat=7">视频</a>
+                </li>
+                <li role="presentation" {{$a :=4 }}{{if eq .cat $a}}class="active" {{end}}>
+                    <a href="?q={{.q}}&cat=4">音乐</a>
+                </li>
+                <li role="presentation" {{$a :=9 }}{{if eq .cat $a}}class="active" {{end}}>
+                    <a href="?q={{.q}}&cat=9">种子</a>
+                </li>
+                <li role="presentation" {{$a :=5 }}{{if eq .cat $a}}class="active" {{end}}>
+                    <a href="?q={{.q}}&cat=5">图片</a>
+                </li>
+            </ul>
+            <h6 class="text-left">找到约{{.total}}个结果，用时({{.tooktime}})毫秒</h6>
+            <ul class="media-list">
+                {{range .list }}
+                <li class="media">
+                    <div class="media-left">
+                        <a href="/sharedfile/{{.ID}}">
+                            <img class="media-object" src="/static/images/{{.Category}}.png">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="alert  {{$a :=0 }}{{if eq .LinkCount $a}}alert-danger {{end}}">
+                            <a href="/sharedfile/{{.ID}}">
+                                <h4 class="media-heading">{{.Title}}</h4>
+                            </a>
+                            <span>点击数：{{.Hot}} </span>
+                            <span>链接数：{{.LinkCount}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{end}}
+            </ul>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination ">
+                    <li>
+                        <a href="/search?q={{.q}}&from={{.paginator.firstpage|pagetofrom}}&cat={{$.cat}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{range $index,$page := .paginator.pages}}
+                    <li {{if eq $.paginator.currpage $page }}class="active" {{end}}>
+                        <a href="/search?q={{$.q}}&from={{$page|pagetofrom}}&cat={{$.cat}}">{{$page}}</a>
+                    </li>
+                    {{end}}
+                    <li>
+                        <a href="/search?q={{.q}}&from={{.paginator.lastpage| pagetofrom}}&cat={{$.cat}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+    </div>
+
+    {{template "footer.html"}}
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+{{template "header.html" .}}
+
+
+<body style="background-image:url({{.pic}});overflow-x:hidden;overflow-y:hidden;height:100%;width: 100%">
+    <nav class="navbar ">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color:white" href="/">行笑网</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-right ">
+
+                <li>
+                    <a style="color:white" href="/wallpaper/{{.id}}">下一张</a>
+                </li>
+                <li>
+                    <a style="color:white" download="pic" href="{{.pic}}">下载</a>
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</body>
+
+</html>

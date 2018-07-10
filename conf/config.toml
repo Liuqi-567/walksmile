@@ -1,0 +1,10 @@
+title = "walksmile config"
+
+IsDebug = false
+OpenCheck = true
+
+[Mysql]
+DataSource = "xxxxx:xxxxx@tcp(127.0.0.1:3306)/walksmile?charset=utf8&parseTime=true"
+MaxIdleConns = 50
+MaxOpenConns = 50 
+ConnMaxLifetime = 86400

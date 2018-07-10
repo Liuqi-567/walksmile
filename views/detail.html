@@ -1,0 +1,218 @@
+<html>
+{{template "header.html" .}} {{template "navbar.html" .}}
+
+<script>
+    //点击公开链接
+    function golink(dom) {
+        var shorturl = dom.getAttribute("data-shorturl")
+        if (shorturl != "") {
+            window.open("https://pan.baidu.com/s/" + shorturl)
+            return
+        }
+        var uk = dom.getAttribute("data-uk");
+        var fileid = dom.getAttribute("data-fileid");
+        var url = "https://pan.baidu.com/wap/link?uk=" + uk + "&shareid=" + fileid;
+        window.open(url)
+    }
+</script>
+
+<body>
+    <div class="container" style="top: 30px;">
+        <div class="row " name="info">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <a style="color:white" href="/search?q={{.file.Title}}">
+                            <h4>{{.file.Title}}</h4>
+                        </a>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class=" row">
+                            <div class="col-xs-3 col-sm-2 col-md-2">
+                                <img src="/static/images/{{$.file.Category}}.png" class="img-rounded " style="height:100px;width:100px">
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <ul>
+                                    <li class="list-group-item">热度：{{.file.Hot}}</li>
+                                    <li class="list-group-item">链接数：{{.file.LinkCount}}</li>
+                                    <li class="list-group-item">更新时间：{{.file.UpdateTime}}</li>
+                                    <li class="list-group-item">创建时间：{{.file.CreateTime}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+            </div>
+
+        </div>
+
+        <div name="links">
+            <div class="panel panel-default">
+                <div class="panel-heading">百度云链接</div>
+                <div class="panel-body">
+                    <div class="row">
+                        {{range $index,$linkandsharer := .list}}
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2  ">
+                            <img src="{{$linkandsharer.Sharer.AvatarUrl}}" class="img-rounded text-center " style="height:110px;width:110px;">
+                            <button type="button" class="btn btn-primary" onclick="golink(this)" value="{{$index}}" data-uk="{{$linkandsharer.Link.FkUK}}"
+                                data-fileid="{{$linkandsharer.Link.ShareID}}" data-shorturl="{{$linkandsharer.Link.ShortUrl}}">点我</button>
+                            <p>
+                                <a disable style="color:deepskyblue">{{$linkandsharer.Sharer.UName}}
+                                    <a/> 的分享</p>
+
+                        </div>
+
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div name="xunlei">
+            <div class="panel panel-default">
+                <div class="panel-heading">迅雷下载</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <ul id="myTab" class="nav nav-tabs list-group">
+                            {{range $index,$items := .download.Tap}}
+                            <li>
+                                <a class="list-group-item" href="#{{$index}}" data-toggle="tab">{{$index}}</a>
+                            </li>
+                            {{end}}
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            {{range $index,$items := .download.Tap}}
+                            <div class="tab-pane fade {{$a :=0 }}{{if eq $index $a}}in active {{end}}" id="{{$index}}">
+
+                                <ul class=" list-group">
+                                    {{range $ii ,$item := $items}}
+                                    <li class="list-group-item"> {{$item.Title}} {{range $k,$v := $item.Links}}
+                                        <a href="{{$v|ToTemplate}}">{{$k}}</a>
+                                        {{end}}
+
+                                    </li>
+
+                                    {{end}}
+                                </ul>
+                            </div>
+                            {{end}}
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div name="recommend">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">更多资源</div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            最新资源
+                            <ul class="list-group">
+                                {{range $index,$sf := .newfile}}
+                                <li class="list-group-item">
+                                    <a href="/sharedfile/{{$sf.ID}}">{{$sf.Title}}</a>
+                                </li>
+                                {{end}}
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            附近资源
+                            <ul class="list-group">
+                                {{range $index,$sf := .more}}
+                                <li class="list-group-item">
+                                    <a href="/sharedfile/{{$sf.ID}}">{{$sf.Title}}</a>
+                                </li>
+                                {{end}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <div name="comment">
+            <div class="panel panel-default">
+                <div class="panel-heading">留言板</div>
+                <div class="panel-body">
+                    <div class="row">
+                        {{range $index,$comment := .comments}}
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+
+                            <strong>
+                                <h4>{{$comment.Name}} :</h4>
+                            </strong>
+                            <small> 发表于： {{$comment.Create_time}}</small>
+                            <br>
+                            <h4> {{$comment.Content}} </h3>
+                        </div>
+
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div name="edit">
+            <div class="panel panel-default">
+                <div class="panel-heading">发言</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" action="/comment">
+
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">名字：</label>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <input type="text" required class="form-control" name="name" maxlength="40" placeholder="输入你的大名">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">邮箱：</label>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <input type="email" required class="form-control" name="email" maxlength="90" placeholder="输入你的邮箱">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="inputEmail3" class="col-sm-2 control-label">发布的内容：</label>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                <textarea rows="4" type="email" required class="form-control" name="content" maxlength="290"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" class="btn btn-default" value="发布" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+    {{template "footer.html" .}}
+
+</body>
+
+</html>

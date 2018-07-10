@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            <a class="navbar-brand" href="/">行笑网</a>
+        </div>
+        <form class="navbar-form  navbar-left" role="search" action="/search">
+            <div class="input-group " style="width:fit-content">
+                <input id="q" value="{{.q}}" type="search" class="form-control" name="q" onkeyup="searchSuggest();" onkeydown="searchSuggest();"
+                    placeholder="search" autocomplete="off">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit" >Go</button>
+                    </span>
+            </div>
+        </form>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right ">
+                        <li> <a style="color:white" href="http://ettren.cn" >优惠券</a></li> 
+                      <li> <a  style="color:white"  href="/wallpaper/0">壁纸</a></li>
+                  </ul>
+        </div>
+
+    </div>
+</nav>

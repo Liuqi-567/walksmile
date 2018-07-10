@@ -1,0 +1,59 @@
+<html>
+{{template "header.html" }} {{template "navbar.html" }}
+
+<body>
+
+    <div class="container" style="top: 30px;">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h6 class="text-left">共有{{.total}}个结果</h6>
+            <ul class="media-list">
+                {{range .list }}
+                <li class="media">
+                    <div class="media-left">
+                        <a href="/sharedfile/{{.ID}}">
+                            <img class="media-object" src="/static/images/{{.Category}}.png">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="alert  {{$a :=0 }}{{if eq .LinkCount $a}}alert-danger {{end}}">
+                            <a href="/sharedfile/{{.ID}}"></a>
+                            <h4 class="media-heading">{{.Title}}</h4>
+                            </a>
+                            <span>点击数：{{.Hot}} </span>
+                            <span>链接数：{{.LinkCount}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{end}}
+            </ul>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination ">
+                    <li>
+                        <a href="/last24?from={{.paginator.firstpage|pagetofrom}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{range $index,$page := .paginator.pages}}
+                    <li {{if eq $.paginator.currpage $page }}class="active" {{end}}>
+                        <a href="/last24?from={{$page|pagetofrom}}">{{$page}}</a>
+                    </li>
+                    {{end}}
+                    <li>
+                        <a href="/last24?from={{.paginator.lastpage| pagetofrom}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+    </div>
+
+
+    {{template "footer.html"}}
+
+
+</body>
+
+</html>
